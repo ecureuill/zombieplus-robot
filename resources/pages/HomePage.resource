@@ -14,6 +14,7 @@ Open Lead Modal
 Go To Admin
     ${link}    Get Element By Role    role=LINK    name=Admin
     Click    selector=${link}
+    Verify Is URL Page    page_url=admin/login
 
 Verify Featured Content
     [Arguments]    ${movies_data}    ${tvshows_data}
