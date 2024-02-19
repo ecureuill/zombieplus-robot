@@ -59,7 +59,7 @@ Should not register a duplicated lead
     Create Lead    payload=${data}
     Open Lead Modal And Submit Form    data=${data}
     Verify Modal Success Message    
-    ...    title_message=!\nAtenção!
+    ...    title_message=Atenção!
     ...    body_message=Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera. Isso significa que você está um passo mais perto de aproveitar nossos serviços.
      
 Should not submit form with invalid data    
