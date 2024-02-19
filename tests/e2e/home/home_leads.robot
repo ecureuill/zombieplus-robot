@@ -2,7 +2,6 @@
 Documentation     Home page test suit
 Resource          ../../../resources/pages/HomePage.resource
 Resource          ../../../resources/pages/components/ModalComponent.resource
-Library           ../../../resources/libs/Database.py    AS    DB
 
 Test Setup        Test Setup    ${DATA}
 Test Teardown     Take Screen Shot
@@ -49,8 +48,8 @@ Should register a lead in wait list
     Open Lead Modal And Submit Form    
     ...    data=${DATA}[success]
     Verify Lead Modal Is Closed
-    Verify Alert Modal Is Opened
-    Verify Alert Modal Success Message    
+    Verify Modal Is Opened
+    Verify Modal Success Message    
     ...    title_message=Fila de espera  
     ...    body_message=Agradecemos por compartilhar seus dados conosco. Em breve, nossa equipe entrará em contato.
 
@@ -59,7 +58,7 @@ Should not register a duplicated lead
     ${data}    Set Variable   ${DATA}[fail][duplicated]
     Create Lead    payload=${data}
     Open Lead Modal And Submit Form    data=${data}
-    Verify Alert Modal Success Message    
+    Verify Modal Success Message    
     ...    title_message=!\nAtenção!
     ...    body_message=Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera. Isso significa que você está um passo mais perto de aproveitar nossos serviços.
      

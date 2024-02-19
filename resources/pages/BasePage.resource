@@ -5,6 +5,7 @@ Library    Browser
 Variables   ../env.yaml
 Resource    ../helpers.resource
 Resource    ../services.resource
+Library    ../libs/Database.py    AS    DB
 
 *** Keywords ***
 Start Browser Context
