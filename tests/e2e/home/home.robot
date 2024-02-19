@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Home page test suit
+Documentation     Home Page - test suit for Naviagtion feature 
 Resource          ../../../resources/pages/HomePage.resource
 
 Test Setup        Start Browser Context

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ZombiePLus API requests
+Documentation    Helpers
 
 Library    JSONLibrary
 

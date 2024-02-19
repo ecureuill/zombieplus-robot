@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Modal Lead component actions and elements
+Documentation    Modal Lead Component - actions and elements
 
 Resource    BaseComponent.resource
 

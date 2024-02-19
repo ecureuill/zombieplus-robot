@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Modal component actions and elements
+Documentation    Modal Component - actions and elements
 
 Resource    BaseComponent.resource
 

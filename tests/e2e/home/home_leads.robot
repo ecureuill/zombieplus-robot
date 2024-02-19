@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Home page test suit
+Documentation     Home Page - test suit for Leads registration feature
 Resource          ../../../resources/pages/HomePage.resource
 Resource          ../../../resources/pages/components/ModalComponent.resource
 
@@ -67,4 +67,4 @@ Should not submit form with invalid data
     data=${DATA}[fail][empty_form]     name_alert_text=Campo obrigatório    email_alert_text=Campo obrigatório
     data=${DATA}[fail][empty_name]     name_alert_text=Campo obrigatório    email_alert_text=${EMPTY}
     data=${DATA}[fail][empty_email]    name_alert_text=${EMPTY}    email_alert_text=Campo obrigatório
-    data=${DATA}[fail][invalid]    name_alert_text=${EMPTY}    email_alert_text=Email incorreto
+    data=${DATA}[fail][invalid]        name_alert_text=${EMPTY}    email_alert_text=Email incorreto

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Home page test suit
+Documentation     Home Page - Featured Content feature test suit
 Resource          ../../../resources/pages/HomePage.resource
 
 Test Setup        Test Setup    ${MOVIES_DATA}    ${TVSHOWS_DATA}

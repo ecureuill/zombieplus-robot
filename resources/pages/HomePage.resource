@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Home page actions and elements
+Documentation    Home Page - actions and elements
 Resource    BasePage.resource
 Resource    ./components/ModalLeadComponent.resource
 

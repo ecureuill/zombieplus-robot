@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation   Main resource file
+Documentation       Base Page - main resource file for Pages
 
 Library    Browser
 Variables   ../env.yaml
