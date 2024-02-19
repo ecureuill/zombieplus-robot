@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Home page test suit
 Resource          ../../../resources/pages/HomePage.resource
-Library           ../../../resources/libs/Database.py    AS    DB
 
 Test Setup        Test Setup    ${MOVIES_DATA}    ${TVSHOWS_DATA}
 Test Teardown     Take Screen Shot    fullPage=True
