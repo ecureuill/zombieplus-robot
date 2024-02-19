@@ -112,7 +112,7 @@
         "company": "Netflix",
         "release_year": 2022,
         "featured": true,
-        "cover":"/covers/movies/not-a-cover.jpg"
+        "cover":"/covers/movies/not-a-cover.txt"
       },
       "sql_injection_title": {
         "title": "Test Movie ; DROP TABLE movies --",

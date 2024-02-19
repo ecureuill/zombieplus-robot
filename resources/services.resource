@@ -39,10 +39,18 @@ Create Movie
     
     ${company_id}     Get Company Id    company_name=${movie_data}[company]
     
-    ${movie_cover}    Set Variable    ${movie_data}[cover]
-    ${file}=  Get File For Streaming Upload  
-    ...    ${EXECDIR}${FIXTURE_PATH}${movie_cover}
+    ${cover_exists}    Evaluate    expression=${movie_data}.get("cover") is not None
+
+    IF  ${cover_exists}
+        ${file_tmp}=  Get File For Streaming Upload  
+        ...    ${EXECDIR}${FIXTURE_PATH}${movie_data}[cover]
+        
+        VAR    ${file}    ${file_tmp}    
+    ELSE
+        VAR    ${file}    ${EMPTY}    
+    END
     
+    Log    ${file}
     ${movie_payload}    Delete Object From Json    
     ...    json_object=${movie_data}    
     ...    json_path=cover
