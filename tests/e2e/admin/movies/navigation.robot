@@ -17,3 +17,4 @@ Test Setup
 *** Test Cases ***
 Should open movie registration form
     Click Add Movie Link
+    Verify Is URL Page    page_url=admin/movies/register
