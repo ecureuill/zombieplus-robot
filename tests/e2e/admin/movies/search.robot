@@ -46,12 +46,12 @@ Search
 *** Test Cases ***
 Should enable clear button
     Search   
-    ...     content=${MOVIES_DATA}[filter][input]
+    ...     search_input=${MOVIES_DATA}[filter][input]
     Verify Serchbar Clear Button Is Visible
 
 Should clear search
     Search    
-    ...    content=${MOVIES_DATA}[filter][input]
+    ...    search_input=${MOVIES_DATA}[filter][input]
     Clear Search
     Verify All Movies Are Listed    movies=${MOVIES_DATA}[data]
 
@@ -71,7 +71,7 @@ Should search by a movie title with special character
 
 Should not retrive movie
     Search    
-    ...    content=${MOVIES_DATA}[no_records][input]
+    ...    search_input=${MOVIES_DATA}[no_records][input]
     ...    expected_output=[]
     Verify Movie Result Is Empty    
 
