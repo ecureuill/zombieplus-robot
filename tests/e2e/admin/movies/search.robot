@@ -32,20 +32,26 @@ Test Setup
     Autenthicate User    data=${value}
 
 Search
-    [Arguments]    ${search_input}    ${expected_output}
+    [Arguments]    ${search_input}    ${expected_output}=${None}
     Search Content    content=${search_input}
+    IF  ${expected_output} == ${None}
+        Log    DO NOTHING ABOUT OUTPUT
+    ELSE IF    ${expected_output} == []
+        Verify Movie Result Is Empty
+    ELSE
+        Verify Movie Result Is Not Empty    titles=${expected_output}
+    END
+    
 
 *** Test Cases ***
 Should enable clear button
     Search   
     ...     content=${MOVIES_DATA}[filter][input]
-    ...    expected_output=[]
     Verify Serchbar Clear Button Is Visible
 
 Should clear search
     Search    
     ...    content=${MOVIES_DATA}[filter][input]
-    ...    expected_output=[]
     Clear Search
     Verify All Movies Are Listed    movies=${MOVIES_DATA}[data]
 
