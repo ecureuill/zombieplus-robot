@@ -2,7 +2,6 @@
   "create_feature": {
     "success": {
       "featured": {
-        "data": {
           "title": "Bugs & Bites: A Luta Contra o Erro Mortal",
           "overview": "Em um mundo infestado por zumbis, uma equipe de QA dedicada se torna a última linha de defesa contra um vírus tecnológico que transforma humanos em monstros digitais.",
           "company": "Netflix",
@@ -10,11 +9,8 @@
           "seasons": 4,
           "featured": true,
           "cover": "/covers/tvshows/bugs and bites.jpg"
-        },
-        "outputs": "Bugs & Bites: A Luta Contra o Erro Mortal4 Temporadas"
       },
       "not_featured": {
-        "data": {
           "title": "Fear Factor: Code Red",
           "overview": "Um reality show coloca em teste as habilidades de QAs em um ambiente pós-apocalíptico infestado por zumbis.",
           "company": "Netflix",
@@ -22,8 +18,6 @@
           "seasons": 3,
           "featured": false,
           "cover": "/covers/tvshows/fear factor.jpg"
-        },
-        "outputs": "Fear Factor: Code Red3 Temporadas"
       }
     },
     "failure": {
@@ -47,7 +41,7 @@
     }
   },
   "delete_feature": {
-    "remove": "A Fazenda Zumbi4 Temporadas",
+    "remove": "A Fazenda Zumbi",
     "data":[
       {
         "title": "A Fazenda Zumbi",
@@ -63,8 +57,8 @@
     "filter": {
       "input": "zumbi",
       "outputs": [
-        "Zumbis na Nuvem: Testando o Apocalipse4 Temporadas",
-        "Zumbis ao Vivo1 Temporada"
+        "Zumbis na Nuvem: Testando o Apocalipse",
+        "Zumbis ao Vivo"
       ]
     },
     "no_records": {
@@ -74,9 +68,9 @@
     "clear_filter": {
       "input": "Código",
       "outputs": [
-        "Zumbis na Nuvem: Testando o Apocalipse4 Temporadas",
-        "Código Morto: A Revolta dos Zombies QAs3 Temporadas",
-        "Zumbis ao Vivo1 Temporada"
+        "Zumbis na Nuvem: Testando o Apocalipse",
+        "Código Morto: A Revolta dos Zombies QAs",
+        "Zumbis ao Vivo"
       ]
     },
     "data": [
