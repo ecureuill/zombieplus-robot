@@ -4,14 +4,7 @@
 
 This project is an automated test suite for ZombiePlus, a zombie-themed movie and series streaming service. The tests are written using Robot Framework and the Browser library, as a learning exercise after having previously automated the same system using Playwright ([repository](https://github.com/ecureuill/zombieplus-playwright)). This project aims to achieve the same level of test coverage as the Playwright project.
 
-**Current Project Status**
-| Page  | Status  |
----| --- |
-| Home | :heavy_check_mark: Finished |
-| Admin Login |  :heavy_check_mark: Finished |
-| Movies  | :heavy_check_mark: Finished |
-| Tv Shows  | :heavy_check_mark: Finished   |
-| Leads  | :construction: Em andamento   |
+This project demonstrates how to adapt POM and componentization concepts within Robot Framework limitations. By adopting this organized structure, ZombiePlus-Robot achieves well-structured, maintainable, and reusable test automation, contributing to efficient and reliable testing practices.
 
 ## Table of Contents
 
@@ -183,7 +176,31 @@ That's it! The tests will now run and you will see the results in your terminal.
 Please note that you need to have Python and pip installed on your machine to run this project.
 
 ## Page Objects and Componentization
-... 
+
+This project aims to achieve the benefits of the Page Object Model (POM) and componentization within the limitations of Robot Framework. While true classes aren't available, we can implement similar concepts through effective organization and data-driven techniques.
+
+### Project Structure Highlights:
+
+- Data-Driven Approach:
+    - resources/fixtures/data: Stores various test data in JSON format, including covers, leads, login credentials, movies, and tvshows.
+    - Parametrized keywords access and utilize this data for dynamic test execution, enhancing reusability and efficiency.
+- Modular Component Libraries:
+    - resources/libs: Houses libraries implementing essential functions like database interactions.
+    - Each library encapsulates relevant logic, promoting modularity and code maintainability.
+- Page Object Representation:
+    - pages: Simulates a page object structure using separate files for each page or component.
+    - pages/components: Holds reusable component-specific keywords (e.g., ModalComponent.ts).
+- Organized Test Suite:
+    - tests/e2e: Maintains test cases categorized by functionality and target areas (admin, home, etc.).
+    - Subdirectories further organize tests based on specific features within each area (e.g., movies, tvshows).
+    - Individual *.robot files capture distinct test scenarios, promoting clarity and easy navigation.
+
+### Benefits of This Structure:
+
+- **Enhanced Readability**: Clear organization and descriptive data files improve understanding.
+- **Optimized Reusability**: Modular libraries and parametrization enable efficient code reuse.
+- **Simplified Maintenance**: Well-defined structure facilitates locating and addressing changes.
+- **Elevated Testability**: Focused keywords within page files allow for granular test execution.
 
 ## API Requests and DataBase queries
 
