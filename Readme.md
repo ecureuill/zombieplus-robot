@@ -8,9 +8,9 @@ This project is an automated test suite for ZombiePlus, a zombie-themed movie an
 | Page  | Status  |
 ---| --- |
 | Home | :heavy_check_mark: Finished |
-| Admin Login |  :construction: Em andamento |
-| Movies  | :hourglass: Waiting   |
-| Tv Shows  | :hourglass: Waiting   |
+| Admin Login |  :heavy_check_mark: Finished |
+| Movies  | :heavy_check_mark: Finished |
+| Tv Shows  | :construction: Em andamento   |
 | Leads  | :hourglass: Waiting   |
 
 ## Table of Contents
