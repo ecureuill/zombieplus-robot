@@ -78,7 +78,7 @@ Create Movie
     ...    data=${payload}[movie_payload]
     ...    expected_status=201
     
-Create Tvshow
+Create Tv Show
     [Arguments]    ${tvshow_data}
 
     ${token}        Set Token

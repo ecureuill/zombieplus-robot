@@ -26,7 +26,7 @@ Verify Featured Content
     END
     
     FOR  ${tvshow}  IN  @{tvshows_data}
-      Create Tvshow    ${tvshow}
+      Create Tv Show    ${tvshow}
     END
     
     Reload
