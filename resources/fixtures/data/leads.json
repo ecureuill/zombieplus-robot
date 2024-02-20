@@ -44,8 +44,8 @@
     "filter": {
       "input": "do",
       "outputs": [
-        "Nome:John Doo",
-        "Nome:Jane Doe"
+        "John Doo",
+        "Jane Doe"
       ]
     },
     "no_records": {
@@ -55,9 +55,9 @@
     "clear_filter": {
       "input": "Bob",
       "outputs": [
-        "Nome:Jane Doe",
-        "Nome:John Doo",
-        "Nome:Bob Who"
+        "Jane Doe",
+        "John Doo",
+        "Bob Who"
       ]
     },
     "data": [
