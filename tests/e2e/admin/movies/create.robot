@@ -36,13 +36,18 @@ Add A Movie
     Close Modal
 
 Fail To Add A Movie
-    [Arguments]    ${movie}
+    [Arguments]    ${movie}    ${alert_list}
     Go to URL                 page_url=admin/movies/register
     Fill Movie Form    movie=${movie}
     Submit Movie Form
+    ${alert_list}  Get Json From String    string=${alert_list}
 
+    FOR  ${alert}  IN  @{alert_list}
+        Verify Field Has Alert Text    field_selector=${alert}[selector]    alert_text=${alert}[text]
+    END
 
 *** Test Cases ***
+
 Should add a movie
     [Tags]    smoke
     [Template]    Add A Movie
@@ -67,6 +72,7 @@ Should not add movie with duplicated title
     
 Should not add movie with invalid or missing data
     [Template]    Fail To Add A Movie
-    ${MOVIES_DATA}[failure][required]
-    ${MOVIES_DATA}[failure][long_title]
-    ${MOVIES_DATA}[failure][invalid_cover]
+    ${MOVIES_DATA}[failure][required]    '[{"selector":"title", "text":"Campo obrigatório"}, {"selector":"overview", "text":"Campo obrigatório"}]'
+    ${MOVIES_DATA}[failure][long_title]    '[{"selector":"title", "text":"Tamanho do texto inserido excede o limite permitido"}]'
+    ${MOVIES_DATA}[failure][long_overview]    '[{"selector":"overview", "text":"Tamanho do texto inserido excede o limite permitido"}]'
+    ${MOVIES_DATA}[failure][invalid_cover]    '[{"selector":"cover", "text":"Invalid file type"}]'

@@ -11,3 +11,8 @@ Get Fixture
     ...    encoding=utf-8
 
     RETURN    ${data}[${scenario}]
+
+Get Json From String
+    [Arguments]    ${string}
+    ${json}    Evaluate    json.loads(${string})
+    RETURN    ${json}
