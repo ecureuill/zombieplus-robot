@@ -26,7 +26,7 @@ Test Setup
     Verify Is URL Page        page_url=admin/movies
     Go to URL                 page_url=admin/movies/register
 
-Add A Movie
+Add A Movie And Verify Its Success
     [Arguments]    ${movie}
     Go to URL                 page_url=admin/movies/register
     Fill Movie Form    movie=${movie}
@@ -50,13 +50,13 @@ Fail To Add A Movie
 
 Should add a movie
     [Tags]    smoke
-    [Template]    Add A Movie
+    [Template]    Add A Movie And Verify Its Success
     ${MOVIES_DATA}[success][not_featured]
     ${MOVIES_DATA}[success][featured]
 
 Should add a movie with special characters
     [Tags]    special characters
-    [Template]    Add A Movie
+    [Template]    Add A Movie And Verify Its Success
     FOR  ${movie}  IN  @{MOVIES_DATA}[success][special_character]
         ${movie}
     END
@@ -69,7 +69,7 @@ Should not add movie with duplicated title
     Submit Movie Form
     Verify Modal Is Opened
     Verify Modal Success Message    title_message=Atenção!    body_message=O título '${movie}[title]' já consta em nosso catálogo. Por favor, verifique se há necessidade de atualizações ou correções para este item.
-    
+        
 Should not add movie with invalid or missing data
     [Template]    Fail To Add A Movie
     ${MOVIES_DATA}[failure][required]    '[{"selector":"title", "text":"Campo obrigatório"}, {"selector":"overview", "text":"Campo obrigatório"}]'

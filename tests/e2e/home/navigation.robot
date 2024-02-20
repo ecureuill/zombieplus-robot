@@ -7,4 +7,4 @@ Test Teardown     Take Screen Shot    fullPage=True
 
 *** Test Cases ***
 Should go to admin page
-    Go To Admin
+    Go To Admin And Verify It Is In Correct Page

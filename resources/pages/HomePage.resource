@@ -11,7 +11,7 @@ Open Lead Modal
     ${button}     Get Element By Role    BUTTON    name=${BUTTON_LEAD}
     Click    selector=${button}
 
-Go To Admin
+Go To Admin And Verify It Is In Correct Page
     ${link}    Get Element By Role    role=LINK    name=Admin
     Click    selector=${link}
     Verify Is URL Page    page_url=admin/login
