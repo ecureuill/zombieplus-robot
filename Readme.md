@@ -44,14 +44,14 @@ This project is an automated test suite for ZombiePlus, a zombie-themed movie an
 zombieplus-robot/
 ├── resources/
 │   ├── fixtures/
-│   │   ├── data/
-│   │   │   ├── covers/
-│   │   │   │   ├── movies/
-│   │   │   │   └── tvshows/
-│   │   │   ├── leads.json
-│   │   │   ├── login.json
-│   │   │   ├── movies.json
-│   │   │   └── tvshows.json
+│   │   └── data/
+│   │       ├── covers/
+│   │       │   ├── movies/
+│   │       │   └── tvshows/
+│   │       ├── leads.json
+│   │       ├── login.json
+│   │       ├── movies.json
+│   │       └── tvshows.json
 │   ├── libs/
 │   │   └── Database.py
 │   ├── config.py
@@ -65,9 +65,19 @@ zombieplus-robot/
 │   ├── HomePage.ts
 │   └── ... 
 ├── tests/
-│   ├── e2e/
-│   │   ├── home.spec.ts
-│   │   └── ... 
+│   └── e2e/ 
+│       ├── admin/
+│       │   ├── movies/
+│       │   │   ├── create.robot
+│       │   │   ├── delete.robot
+│       │   │   ├── navigation.robot
+│       │   │   └── search.robot
+│       │   ├── tvshows/
+│       │   └── leads/
+│       └── home/ 
+│             ├── featured.robot
+│             ├── leads.robot
+│             └── navigation.robot
 ├── requirements.txt
 └── ...
 ```
