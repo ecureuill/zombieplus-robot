@@ -8,6 +8,7 @@ This project demonstrates how to adapt POM and componentization concepts within 
 
 ## Table of Contents
 
+- [Test Reports](#test-reports)
 - [Tech Stack and Their Roles](#tech-stack-and-their-roles)
 - [Project Structure](#project-structure)
 - [Testing Coverage](#testing-coverage)
@@ -23,6 +24,15 @@ This project demonstrates how to adapt POM and componentization concepts within 
 - [ZombiePlus Access](#zombieplus-access)
 - [Feedback and Questions](#feedback-and-questions)
 ----------------
+## Test Reports
+
+The test execution report is available on the [project's GitHub Page](https://ecureuill.github.io/zombieplus-robot/report.html)
+
+The report includes:
+- Success and failure statistics
+- Details of each test case
+- Screenshots
+- Links to logs
 
 ## Tech Stack and Their Roles
 - **Robot Framework**: A generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It provides the structure for organizing and executing tests.
