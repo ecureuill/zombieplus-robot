@@ -31,28 +31,23 @@ Get Company Id
     LOG    ${response.json()}
     RETURN    ${response.json()}[data][0][id]
 
-Create Movie
-    [Arguments]    ${movie_data}
-
-    ${token}          Set Token
-    ${headers}        Create Dictionary    Authorization=Bearer ${token}
+Create Media Payload
+    [Arguments]    ${media_data}
+    ${company_id}     Get Company Id    company_name=${media_data}[company]
     
-    ${company_id}     Get Company Id    company_name=${movie_data}[company]
-    
-    ${cover_exists}    Evaluate    expression=${movie_data}.get("cover") is not None
+    ${cover_exists}    Evaluate    expression=${media_data}.get("cover") is not None
 
     IF  ${cover_exists}
         ${file_tmp}=  Get File For Streaming Upload  
-        ...    ${EXECDIR}${FIXTURE_PATH}${movie_data}[cover]
+        ...    ${EXECDIR}${FIXTURE_PATH}${media_data}[cover]
         
         VAR    ${file}    ${file_tmp}    
     ELSE
         VAR    ${file}    ${EMPTY}    
     END
     
-    Log    ${file}
     ${movie_payload}    Delete Object From Json    
-    ...    json_object=${movie_data}    
+    ...    json_object=${media_data}    
     ...    json_path=cover
     ${movie_payload}    Delete Object From Json    
     ...    json_object=${movie_payload}    
@@ -64,48 +59,37 @@ Create Movie
     ...    json_path=@ 
     ...    object_to_add=${tmp_dict}
     
-    ${file_payload} 	Create Dictionary    cover=${file} 	
+    ${file_payload} 	Create Dictionary    cover=${file} 
 
+    ${result}    Create Dictionary    file_payload=${file_payload}    movie_payload=${movie_payload}
+    RETURN    ${result}	
+
+Create Movie
+    [Arguments]    ${movie_data}
+
+    ${token}          Set Token
+    ${headers}        Create Dictionary    Authorization=Bearer ${token}
+    
+    ${payload}    Create Media Payload    media_data=${movie_data}
     POST     
     ...    url=${API_HOST}/movies
     ...    headers=${headers}
-    ...    files=${file_payload}    
-    ...    data=${movie_payload}
+    ...    files=${payload}[file_payload]    
+    ...    data=${payload}[movie_payload]
     ...    expected_status=201
     
 Create Tvshow
     [Arguments]    ${tvshow_data}
 
-    Log    ${tvshow_data}
     ${token}        Set Token
     ${headers}      Create Dictionary    Authorization=Bearer ${token}
     
-    ${company_id}    Get Company Id    company_name=${tvshow_data}[company]
-    
-    ${tvshow_cover}    Set Variable    ${tvshow_data}[cover]
-    ${file}    Get File For Streaming Upload  
-    ...    ${EXECDIR}${FIXTURE_PATH}${tvshow_cover}
-    
-    ${tvshow_payload}    Delete Object From Json    
-    ...    json_object=${tvshow_data}    
-    ...    json_path=cover
-    ${tvshow_payload}    Delete Object From Json    
-    ...    json_object=${tvshow_payload}    
-    ...    json_path=company
-
-    ${tmp_dict} 	Create Dictionary 	company_id=${company_id} 	
-    ${tvshow_payload}    Add Object To Json
-    ...    json_object=${tvshow_payload}    
-    ...    json_path=@ 
-    ...    object_to_add=${tmp_dict}
-    
-    ${file_payload} 	Create Dictionary    cover=${file} 	
-    Log    ${tvshow_payload}
+    ${payload}    Create Media Payload    media_data=${tvshow_data}
     POST     
     ...    url=${API_HOST}/tvshows
     ...    headers=${headers}
-    ...    files=${file_payload}    
-    ...    data=${tvshow_payload}
+    ...    files=${payload}[file_payload]    
+    ...    data=${payload}[movie_payload]
     ...    expected_status=201
     
 
