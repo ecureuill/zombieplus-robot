@@ -30,6 +30,7 @@ Delete Request
 
 Confirm Deletion
     Click    selector=.confirm-removal
+
 Verify Movie Result Is Empty
     Verify Table Is Not Visible
     ${text_element}    Get Element By    
@@ -55,7 +56,7 @@ Verify All Movies Are Listed
     FOR  ${movie}  IN  @{movies}
         Log    ${movie}
         Verify Table Contains    
-        ...    cell_class_selector=td.title    
+        ...    cell_class_selector=title    
         ...    text=${movie}[title]    
     END
 
@@ -67,6 +68,6 @@ Verify All Titles Are Listed
     
     FOR  ${movie}  IN  @{titles}
         Verify Table Contains    
-        ...    cell_class_selector=td.title    
+        ...    cell_class_selector=title    
         ...    text=${movie}   
     END

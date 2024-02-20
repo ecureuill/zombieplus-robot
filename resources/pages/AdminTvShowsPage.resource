@@ -42,7 +42,7 @@ Verify All TV Shows Are Listed
     FOR  ${movie}  IN  @{tvshows}
         Log    ${movie}
         Verify Table Contains    
-        ...    cell_class_selector=td.title    
+        ...    cell_class_selector=title    
         ...    text=${movie}[title]    
     END
 
@@ -54,6 +54,6 @@ Verify All Titles Are Listed
     
     FOR  ${movie}  IN  @{titles}
         Verify Table Contains    
-        ...    cell_class_selector=td.title    
+        ...    cell_class_selector=title    
         ...    text=${movie}   
     END

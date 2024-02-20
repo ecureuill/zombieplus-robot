@@ -10,7 +10,7 @@ Verify Table Contains
     [Arguments]    ${cell_class_selector}    ${text}
 
     Wait For Elements State    
-    ...    selector=//td[@class="title" and text() = "${text}"]
+    ...    selector=//td[@class="${cell_class_selector}" and text() = "${text}"]
     ...    state=visible    
     ...    timeout=5s
   
