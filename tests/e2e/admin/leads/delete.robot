@@ -2,11 +2,11 @@
 Documentation        Admin Leads Page - test suit for Delete Lead feature
 Resource            ../../../../resources/pages/AdminLeadsPage.resource
 Resource            ../../../../resources/pages/AdminLoginPage.resource
-Test Setup        Test Setup    ${MOVIES_DATA}
+Test Setup        Test Setup    ${LEADS_DATA}
 Test Teardown    Take Screenshot    fullPage=True
 
 *** Variables ***
-${MOVIES_DATA}
+${LEADS_DATA}
 
 *** Keywords ***
 Test Setup
@@ -27,20 +27,20 @@ Test Setup
     Go to URL    page_url=admin/leads    
 
 Delete
-    [Arguments]    ${title}    ${data}
+    [Arguments]    ${email}    ${data}
     
     ${data_is_array}    Evaluate    expression=isinstance(${data}, list)
 
     IF  ${data_is_array}
-        FOR  ${movie}  IN  @{data}
-            Create Lead    payload=${movie}
+        FOR  ${lead}  IN  @{data}
+            Create Lead    payload=${lead}
         END
     ELSE
         Create Lead    payload=${data}
     END
     
     Reload
-    Delete Request    email=${title}
+    Delete Request    email=${email}
     Confirm Deletion
     Verify Modal Is Opened
     Verify Modal Success Message
@@ -48,13 +48,5 @@ Delete
     ...    body_message=Lead removido com sucesso.
 
 *** Test Cases ***
-Should remove a movie
-    Delete    title=${MOVIES_DATA}[remove]    data=${MOVIES_DATA}[data]
-
-Should remove a movie with special character
-    [Tags]    special characters
-    [Template]    Delete
-
-    FOR  ${movie}  IN  @{MOVIES_DATA}[special_character]
-        ${movie}[title]    ${movie}
-    END
+Should remove a lead
+    Delete    email=${LEADS_DATA}[remove]    data=${LEADS_DATA}[data]
