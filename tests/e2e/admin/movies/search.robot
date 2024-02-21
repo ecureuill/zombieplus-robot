@@ -3,28 +3,29 @@ Documentation            Admin Movies Page - test suit for Search Movie feature
 Resource                ../../../../resources/pages/BasePage.resource
 Resource                ../../../../resources/pages/AdminMoviesPage.resource
 Resource                ../../../../resources/pages/AdminLoginPage.resource
-Test Setup              Test Setup    ${MOVIES_DATA}
+Suite Setup              Suite Setup    ${MOVIES_DATA}
+Test Setup              Test Setup
 Test Teardown           Take Screenshot    fullPage=True
 
 *** Variables ***
 ${MOVIES_DATA}
 
 *** Keywords ***
-Test Setup
+Suite Setup
     [Arguments]    ${movies_data}
-    
     DB.Execute Sql    sql=DELETE FROM movies
 
     ${value}    Get Fixture    
     ...    file_name=movies    
     ...    scenario=search_feature
-    Set Test Variable    ${movies_data}    ${value}
+    Set Suite Variable    ${movies_data}    ${value}
 
     FOR  ${movie}  IN  @{movies_data}[data]
         Create Movie    movie_data=${movie}
     END
 
-    ${value}    Get Fixture    
+Test Setup
+        ${value}    Get Fixture    
     ...    file_name=login    
     ...    scenario=success
 

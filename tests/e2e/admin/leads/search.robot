@@ -3,27 +3,28 @@ Documentation            Admin Leads Page - test suit for Search Lead feature
 Resource                ../../../../resources/pages/BasePage.resource
 Resource                ../../../../resources/pages/AdminLeadsPage.resource
 Resource                ../../../../resources/pages/AdminLoginPage.resource
-Test Setup              Test Setup    ${LEADS_DATA}
+Suite Setup             Suite Setup        leads_data=${LEADS_DATA}
+Test Setup              Test Setup
 Test Teardown           Take Screenshot    fullPage=True
 
 *** Variables ***
 ${LEADS_DATA}
 
 *** Keywords ***
-Test Setup
+Suite Setup
     [Arguments]    ${leads_data}
-    
     DB.Execute Sql    sql=DELETE FROM leads
 
     ${value}    Get Fixture    
     ...    file_name=leads    
     ...    scenario=search_feature
-    Set Test Variable    ${leads_data}    ${value}
+    Set Suite Variable    ${leads_data}    ${value}
 
     FOR  ${movie}  IN  @{leads_data}[data]
         Create Lead    payload=${movie}
     END
 
+Test Setup
     ${value}    Get Fixture    
     ...    file_name=login    
     ...    scenario=success

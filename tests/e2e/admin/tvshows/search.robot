@@ -3,27 +3,29 @@ Documentation    Admin Tv Shows Page - test suit for Search feature
 Resource                ../../../../resources/pages/BasePage.resource
 Resource                ../../../../resources/pages/AdminTvShowsPage.resource
 Resource                ../../../../resources/pages/AdminLoginPage.resource
-Test Setup              Test Setup    ${TVSHOWS_DATA}
+Suite Setup             Suite Setup    tvshows_data=${TVSHOWS_DATA}
+Test Setup              Test Setup
 Test Teardown           Take Screenshot    fullPage=True
 
 *** Variables ***
 ${TVSHOWS_DATA}
 
 *** Keywords ***
-Test Setup
+Suite Setup
     [Arguments]    ${tvshows_data}
-    
+
     DB.Execute Sql    sql=DELETE FROM tvshows
 
     ${value}    Get Fixture    
     ...    file_name=tvshows    
     ...    scenario=search_feature
-    Set Test Variable    ${tvshows_data}    ${value}
+    Set Suite Variable    ${tvshows_data}    ${value}
 
     FOR  ${tvshows}  IN  @{tvshows_data}[data]
         Create Tvshow    tvshow_data=${tvshows}
     END
 
+Test Setup
     ${value}    Get Fixture    
     ...    file_name=login    
     ...    scenario=success
