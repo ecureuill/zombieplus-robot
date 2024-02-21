@@ -33,15 +33,33 @@ Test Setup
 
 Search
     [Arguments]    ${search_input}    ${expected_output}=${None}
+
     Search Content    content=${search_input}
-    IF  ${expected_output} == ${None}
-        Log    DO NOTHING ABOUT OUTPUT
-    ELSE IF    ${expected_output} == []
-        Verify Movie Result Is Empty
-    ELSE
-        Verify Movie Result Is Not Empty    titles=${expected_output}
+    
+    ${is_list}    Evaluate    isinstance(${expected_output}, list)
+    
+    IF    ${is_list}
+        ${length}    Get Length    ${expected_output}
+        IF    ${length} > 0
+            Verify Movie Result Is Not Empty    titles=${expected_output}
+        ELSE  
+            Verify Movie Result Is Empty
+        END
     END
     
+Search With Special Characters
+    [Arguments]    ${search_input}
+    DB.Execute Sql    sql=DELETE FROM movies
+    
+    FOR  ${movie}  IN  @{MOVIES_DATA}[special_character]
+        Create Movie    movie_data=${movie}
+    END
+    
+    ${expected_output}    Create List    ${search_input}
+
+    Search    
+    ...    search_input=${search_input}    
+    ...    expected_output=${expected_output}
 
 *** Test Cases ***
 Should enable clear button
@@ -64,14 +82,14 @@ Should search by a movie title
 
 Should search by a movie title with special character
     [Tags]    special characters
-    [Template]    Search  
-    FOR  ${movie}  IN  ${MOVIES_DATA}[special_character]
-        ${MOVIES_DATA}[filter][input]    ${MOVIES_DATA}[filter][outputs]
+    [Template]    Search With Special Characters 
+    FOR  ${movie}  IN  @{MOVIES_DATA}[special_character]
+        ${movie}[title]
     END
 
 Should not retrive movie
     Search    
     ...    search_input=${MOVIES_DATA}[no_records][input]
-    ...    expected_output=[]
+    ...    expected_output=${MOVIES_DATA}[no_records][outputs]
     Verify Movie Result Is Empty    
 
