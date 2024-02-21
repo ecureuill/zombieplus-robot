@@ -36,14 +36,16 @@ Test Setup
 Search
     [Arguments]    ${search_input}    ${expected_output}=${None}
     Search Content    content=${search_input}
-    IF  ${expected_output} == ${None}
-        Log    DO NOTHING ABOUT OUTPUT
-    ELSE IF    ${expected_output} == []
-        Verify Lead Result Is Empty
-    ELSE
-        Verify Lead Result Is Not Empty    titles=${expected_output}
-    END
+    ${is_list}    Evaluate    isinstance(${expected_output}, list)
     
+    IF    ${is_list}
+        ${length}    Get Length    ${expected_output}
+        IF    ${length} > 0
+            Verify Lead Result Is Not Empty    titles=${expected_output}
+        ELSE  
+            Verify Lead Result Is Empty
+        END
+    END
 
 *** Test Cases ***
 Should enable clear button
@@ -67,6 +69,6 @@ Should search by a lead email
 Should not retrive a lead
     Search    
     ...    search_input=${LEADS_DATA}[no_records][input]
-    ...    expected_output=[]
+    ...    expected_output=${LEADS_DATA}[no_records][outputs]
     Verify Lead Result Is Empty
 

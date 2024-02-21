@@ -37,13 +37,17 @@ Test Setup
 Search
     [Arguments]    ${search_input}    ${expected_output}=${None}
     Search Content    content=${search_input}
-    IF  ${expected_output} == ${None}
-        Log    DO NOTHING ABOUT OUTPUT
-    ELSE IF    ${expected_output} == []
-        Verify TV Shows Result Is Empty
-    ELSE
-        Verify TV Shows Result Is Not Empty    titles=${expected_output}
+    ${is_list}    Evaluate    isinstance(${expected_output}, list)
+    
+    IF    ${is_list}
+        ${length}    Get Length    ${expected_output}
+        IF    ${length} > 0
+            Verify Tv Shows Result Is Not Empty    titles=${expected_output}
+        ELSE  
+            Verify Tv Shows Result Is Empty
+        END
     END
+
     
 
 *** Test Cases ***
@@ -68,6 +72,6 @@ Should search by a tvshows title
 Should not retrive tvshows
     Search    
     ...    search_input=${TVSHOWS_DATA}[no_records][input]
-    ...    expected_output=[]
+    ...    expected_output=${TVSHOWS_DATA}[no_records][outputs]
     Verify TvShows Result Is Empty    
 
