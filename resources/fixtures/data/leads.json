@@ -28,7 +28,7 @@
     }
   },
   "delete_feature": {
-    "remove": "franklee",
+    "remove": "franklee@example.com",
     "data": [
       {
         "email": "franklee@example.com",
