@@ -34,6 +34,20 @@ The report includes:
 - Screenshots
 - Links to logs
 
+1. Long Title Validation Failure:
+    - **Test**: Should not add movie with long title
+    - **Description:** Attempting to create a movie with a title exceeding the allowed character limit results in an unexpected behavior.
+2. Long Overview Validation Failure:
+    - **Test**: Should not add movie with long overview
+    - **Description:** Attempting to create a movie with a overview exceeding the allowed character limit results in an unexpected behavior.
+3. Invalid Cover File Failure: 
+    - **Test**: Should not add movie with invalid cover file (e.g not a image)
+    - **Description:** Is possible to create a movie with a invalid file (i.e, text file).
+4. Insufficient Special Character Validation:
+    - **Test 1**: Should filter movie with special character title Test Movie with tab \t
+    - **Test 2**: Should filter movie with special character title Test Movie with right-to-left mark \u200F
+    - **Description**: The system failed to filter movies containing special characters in their titles.
+
 ## Tech Stack and Their Roles
 - **Robot Framework**: A generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It provides the structure for organizing and executing tests.
 - **Browser Libray**: A Robot Framework library for browser automation. It allows for interaction with web pages, simulating user actions like clicking, typing, and navigating.
