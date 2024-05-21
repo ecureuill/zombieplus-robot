@@ -18,7 +18,7 @@ protobuf==4.25.2
 psycopg2-binary==2.9.9
 PyYAML==6.0.1
 referencing==0.33.0
-requests==2.31.0
+requests==2.32.0
 robotframework==7.0
 robotframework-assertion-engine==3.0.3
 robotframework-browser==18.1.0
